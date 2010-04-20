@@ -26,21 +26,27 @@ __END__
 
 =head1 NAME
 
-Catalyst::Plugin::Bread::Board - A Moosey solution to this problem
+Catalyst::Plugin::Bread::Board - Use Bread::Board to configure your Catalyst app
 
 =head1 SYNOPSIS
 
-  use Catalyst::Plugin::Bread::Board;
+  package My::App;
+  use Moose;
+
+  use Catalyst qw[
+      Bread::Board
+  ];
+
+  __PACKAGE__->config(
+      'Plugin::Bread::Board' => {
+          container => My::App::Container->new(
+              name     => 'My::App',
+              app_root => __PACKAGE__->path_to('.')
+          )
+      }
+  );
 
 =head1 DESCRIPTION
-
-=head1 METHODS
-
-=over 4
-
-=item B<>
-
-=back
 
 =head1 BUGS
 

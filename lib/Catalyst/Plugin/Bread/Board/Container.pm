@@ -55,7 +55,6 @@ sub as_catalyst_config {
 
     }
 
-
     $config;
 }
 
@@ -70,21 +69,49 @@ __END__
 
 =head1 NAME
 
-Catalyst::Plugin::Bread::Board::Container - A Moosey solution to this problem
+Catalyst::Plugin::Bread::Board::Container - A Bread::Board container for use with Catalyst
 
 =head1 SYNOPSIS
 
-  use Catalyst::Plugin::Bread::Board::Container;
+  package My::App::Container;
+  use Moose;
+  use Bread::Board;
+
+  extends 'Catalyst::Plugin::Bread::Board::Container';
+
+  sub BUILD {
+      my $self = shift;
+
+      container $self => as {
+
+          container 'Model' => as {
+              container 'DBIC' => as {
+                  service 'schema_class' => 'Test::App::Schema::DB';
+                  service 'connect_info' => [
+                      'dbi:mysql:my_app_db',
+                      'me',
+                      '****'
+                  ];
+              };
+          };
+
+          container 'View' => as {
+              container 'TT' => as {
+                  service 'TEMPLATE_EXTENSION' => '.tt';
+                  service 'INCLUDE_PATH'       => (
+                      block => sub {
+                          my $root = (shift)->param('app_root');
+                          [ $root->subdir('root/templates')->stringify ]
+                      },
+                      dependencies => [ depends_on('/app_root') ]
+                  );
+              };
+          };
+
+      };
+  }
 
 =head1 DESCRIPTION
-
-=head1 METHODS
-
-=over 4
-
-=item B<>
-
-=back
 
 =head1 BUGS
 
