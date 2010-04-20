@@ -6,8 +6,12 @@ our $AUTHORITY = 'cpan:STEVAN';
 
 sub setup {
     my $c = shift;
-
-
+    $c->config(
+        $c->config
+          ->{'Plugin::Bread::Board'}
+          ->{'container'}
+          ->as_catalyst_config
+    );
     $c->next::method( @_ )
 }
 

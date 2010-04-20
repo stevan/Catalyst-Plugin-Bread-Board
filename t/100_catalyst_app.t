@@ -9,7 +9,9 @@ use Test::More;
 use Test::Exception;
 use Test::Moose;
 
-use lib "$FindBin::Bin/apps/Test-App/lib";
+use lib
+    "$FindBin::Bin/lib",
+    "$FindBin::Bin/apps/Test-App/lib";
 
 use Test::App::Schema::DB;
 
