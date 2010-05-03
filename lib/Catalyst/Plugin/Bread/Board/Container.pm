@@ -113,6 +113,10 @@ Catalyst::Plugin::Bread::Board::Container - A Bread::Board container for use wit
 
 =head1 DESCRIPTION
 
+This is a subclass of L<Bread::Board::Container> that is meant to be
+used with L<Catalyst::Plugin::Bread::Board>. For now this is pretty
+simple, but soon it will have more features.
+
 =head1 BUGS
 
 All complex software has bugs lurking in it, and this module is no

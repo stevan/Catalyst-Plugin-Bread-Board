@@ -18,6 +18,8 @@ This module requires these other modules and libraries:
 
     Moose
     Bread::Board
+    Catalyst
+    MooseX::Types::Path::Class
 
 COPYRIGHT AND LICENCE
 
