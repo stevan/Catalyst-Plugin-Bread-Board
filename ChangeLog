@@ -1,4 +1,8 @@
 Revision history for Perl extension Catalyst::Plugin::Bread::Board
 
+0.02
+    - fixing the test so it doesn't use ->deploy and force
+      a dependency of SQL::Translator
+
 0.01 Monday, May 3, 2010
     - about f-ing time someone did this

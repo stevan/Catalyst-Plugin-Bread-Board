@@ -3,7 +3,7 @@ use Moose;
 use Bread::Board;
 use MooseX::Types::Path::Class;
 
-our $VERSION   = '0.01';
+our $VERSION   = '0.02';
 our $AUTHORITY = 'cpan:STEVAN';
 
 extends 'Bread::Board::Container';
@@ -57,7 +57,6 @@ sub as_catalyst_config {
 
     $config;
 }
-
 
 __PACKAGE__->meta->make_immutable;
 

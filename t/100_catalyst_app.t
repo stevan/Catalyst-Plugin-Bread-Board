@@ -23,7 +23,17 @@ $db_file->remove if -e $db_file;
 my $s = Test::App::Schema::DB->connect(
     'dbi:SQLite:dbname=' . $db_file
 );
-$s->deploy;
+$s->storage->dbh_do( sub {
+        my ($storage, $dbh) = @_;
+        $dbh->do(q{
+            CREATE TABLE artist (
+              id   NOT NULL,
+              name NOT NULL,
+              PRIMARY KEY (id)
+            )
+        })
+    }
+);
 
 my $artists = $s->resultset('Artist');
 
