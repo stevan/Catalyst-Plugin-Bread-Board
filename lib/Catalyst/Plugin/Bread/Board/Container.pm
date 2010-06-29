@@ -38,7 +38,7 @@ sub as_catalyst_config {
         # this is no doubt wrong, but
         # it will suffice for now
         # - SL
-        next unless $container_name =~ /^Model|View|Plugin$/;
+        next unless $container_name =~ /^Model|View|Plugin|Controller$/;
 
         my $container = $self->get_sub_container( $container_name );
 
