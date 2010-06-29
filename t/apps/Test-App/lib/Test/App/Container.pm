@@ -35,6 +35,11 @@ sub BUILD {
             };
         };
 
+        container 'Controller' => as {
+            container 'Foo' => as {
+                service bar => 42;
+            },
+        };
     };
 }
 
